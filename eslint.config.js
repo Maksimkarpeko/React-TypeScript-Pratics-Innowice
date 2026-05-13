@@ -1,5 +1,5 @@
 import js from '@eslint/js'
-import eslintConfigPrettier from 'eslint-config-prettier'
+import eslintPluginPrettier from 'eslint-plugin-prettier'
 import importPlugin from 'eslint-plugin-import'
 import perfectionist from 'eslint-plugin-perfectionist'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -26,6 +26,7 @@ export default defineConfig([
       import: importPlugin,
       perfectionist,
       unicorn,
+      prettier: eslintPluginPrettier,
     },
 
     languageOptions: {
