@@ -1,0 +1,1 @@
+export { getUserFromLocalStorage } from './get-user-from-local-storage'
