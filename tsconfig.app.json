@@ -6,13 +6,15 @@
     "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@shared/*": ["src/shared/*"],
       "@app/*": ["src/app/*"],
       "@modules/*": ["src/modules/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "react": ["./node_modules/@types/react"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

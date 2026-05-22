@@ -1,7 +1,6 @@
 import js from '@eslint/js'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 import importPlugin from 'eslint-plugin-import'
-import perfectionist from 'eslint-plugin-perfectionist'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import unicorn from 'eslint-plugin-unicorn'
@@ -11,7 +10,6 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   globalIgnores(['dist', 'node_modules', 'coverage', '.vite']),
-
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -19,16 +17,12 @@ export default defineConfig([
       ...tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
-      eslintConfigPrettier,
     ],
-
     plugins: {
       import: importPlugin,
-      perfectionist,
       unicorn,
       prettier: eslintPluginPrettier,
     },
-
     languageOptions: {
       globals: globals.browser,
       ecmaVersion: 'latest',
