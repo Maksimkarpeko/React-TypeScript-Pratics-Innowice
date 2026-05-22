@@ -9,14 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './app/routes/__root'
-import { Route as OnboardingRouteImport } from './app/routes/onboarding'
+import { Route as WelcomeRouteImport } from './app/routes/welcome'
 import { Route as AuthRouteImport } from './app/routes/auth'
 import { Route as MainRouteImport } from './app/routes/_main'
 import { Route as MainIndexRouteImport } from './app/routes/_main/index'
 
-const OnboardingRoute = OnboardingRouteImport.update({
-  id: '/onboarding',
-  path: '/onboarding',
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -37,41 +37,41 @@ const MainIndexRoute = MainIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof MainIndexRoute
   '/auth': typeof AuthRoute
-  '/onboarding': typeof OnboardingRoute
+  '/welcome': typeof WelcomeRoute
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
-  '/onboarding': typeof OnboardingRoute
+  '/welcome': typeof WelcomeRoute
   '/': typeof MainIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_main': typeof MainRouteWithChildren
   '/auth': typeof AuthRoute
-  '/onboarding': typeof OnboardingRoute
+  '/welcome': typeof WelcomeRoute
   '/_main/': typeof MainIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/onboarding'
+  fullPaths: '/' | '/auth' | '/welcome'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth' | '/onboarding' | '/'
-  id: '__root__' | '/_main' | '/auth' | '/onboarding' | '/_main/'
+  to: '/auth' | '/welcome' | '/'
+  id: '__root__' | '/_main' | '/auth' | '/welcome' | '/_main/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   MainRoute: typeof MainRouteWithChildren
   AuthRoute: typeof AuthRoute
-  OnboardingRoute: typeof OnboardingRoute
+  WelcomeRoute: typeof WelcomeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/onboarding': {
-      id: '/onboarding'
-      path: '/onboarding'
-      fullPath: '/onboarding'
-      preLoaderRoute: typeof OnboardingRouteImport
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -111,7 +111,7 @@ const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   MainRoute: MainRouteWithChildren,
   AuthRoute: AuthRoute,
-  OnboardingRoute: OnboardingRoute,
+  WelcomeRoute: WelcomeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

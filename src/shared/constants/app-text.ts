@@ -1,15 +1,13 @@
-import type { keyof } from 'zod'
-
 export const APP_TEXT = {
-  onboarding: {
+  welcome: {
     title: 'Welcome to the Help Desk',
     description:
       'We will help you process requests efficiently, manage clients, and solve problems faster.',
     registrationButton: 'Registration',
     loginButton: 'Login',
   },
-  auth_mode: {
-    reg: 'registration',
+  authMode: {
+    register: 'registration',
     login: 'login',
   },
   auth: {
@@ -28,11 +26,11 @@ export const APP_TEXT = {
       footerLink: 'Registration',
     },
     fieldsLabel: {
-      Name: 'Name',
-      Password: 'Password',
-      Email: 'Email',
+      name: 'Name',
+      password: 'Password',
+      email: 'Email',
     },
   },
 } as const
 
-export type AuthModeType = (typeof APP_TEXT.auth_mode)[keyof typeof APP_TEXT.auth_mode];
+export type AuthModeType = (typeof APP_TEXT.authMode)[keyof typeof APP_TEXT.authMode]

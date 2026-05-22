@@ -1,11 +1,7 @@
-import type { FC, ReactNode } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import { Header } from '../header/Header'
 
-type MainLayoutProps = {
-  children: ReactNode;
-}
-
-export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
+export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div>
       <Header />
