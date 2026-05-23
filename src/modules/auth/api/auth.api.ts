@@ -1,7 +1,9 @@
-import { BASE_URL } from '@shared/constants'
-import type { AuthFormFields } from '../schema/auth.schema'
 import type { User } from '@shared/types'
+
+import { BASE_URL } from '@shared/constants'
 import { customFetch } from '@shared/utils'
+
+import type { AuthFormFields } from '../schema/auth.schema'
 
 export const registrationUser = async ({
   username,

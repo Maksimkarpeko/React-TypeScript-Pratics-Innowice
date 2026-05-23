@@ -1,9 +1,8 @@
-import { ROUTES_PATHS } from '@shared/constants'
 import { HomePage } from '@pages/home'
-import { getUserFromLocalStorage } from '@shared/utils/get-user-from-local-storage'
+import { getUserFromLocalStorage } from '@shared/utils'
 import { createFileRoute, redirect } from '@tanstack/react-router'
 
-export const Route = createFileRoute(`${ROUTES_PATHS.layout.main}/`)({
+export const Route = createFileRoute('/_main/')({
   beforeLoad: () => {
     const user = getUserFromLocalStorage()
 

@@ -1,7 +1,9 @@
+import { WelcomeSection } from './ui/welcome-section/welcomeSection'
+
 export const HomePage = () => {
   return (
     <div>
-      Home page
+      <WelcomeSection />
     </div>
   )
 }

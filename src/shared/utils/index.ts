@@ -1,2 +1,2 @@
-export { getUserFromLocalStorage } from './get-user-from-local-storage'
-export { customFetch } from './custom-fetch'
+export { getUserFromLocalStorage } from './getUserFromLocalStorage'
+export { customFetch } from './customFetch'

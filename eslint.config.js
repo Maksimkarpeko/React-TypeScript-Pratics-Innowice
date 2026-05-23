@@ -4,6 +4,7 @@ import importPlugin from 'eslint-plugin-import'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import unicorn from 'eslint-plugin-unicorn'
+import perfectionist from 'eslint-plugin-perfectionist'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import { defineConfig, globalIgnores } from 'eslint/config'
@@ -22,6 +23,7 @@ export default defineConfig([
       import: importPlugin,
       unicorn,
       prettier: eslintPluginPrettier,
+      perfectionist,
     },
     languageOptions: {
       globals: globals.browser,
@@ -34,36 +36,6 @@ export default defineConfig([
       semi: ['error', 'never'],
       indent: ['error', 2],
       'comma-dangle': ['error', 'always-multiline'],
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            ['parent', 'sibling', 'index'],
-            'object',
-            'type',
-          ],
-
-          pathGroups: [
-            {
-              pattern: '@/**',
-              group: 'internal',
-              position: 'before',
-            },
-          ],
-
-          pathGroupsExcludedImportTypes: ['builtin'],
-
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-
-          'newlines-between': 'always',
-        },
-      ],
 
       'perfectionist/sort-imports': [
         'error',

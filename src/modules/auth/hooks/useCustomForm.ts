@@ -1,7 +1,9 @@
-import { APP_TEXT, type AuthModeType } from '@shared/constants/app-text'
-import { schema, type AuthFormFields } from '../schema/auth.schema'
 import { zodResolver } from '@hookform/resolvers/zod/dist/zod.js'
 import { useForm } from 'react-hook-form'
+
+import { APP_TEXT, type AuthModeType } from '@/shared/constants/appText'
+
+import { schema, type AuthFormFields } from '../schema/auth.schema'
 
 export const useCustomForm = (mode: AuthModeType) => {
   const { fieldsLabel } = APP_TEXT.auth
@@ -18,7 +20,7 @@ export const useCustomForm = (mode: AuthModeType) => {
   })
 
   const isRegister = mode === registerMode
-  
+
   const currentModeKey = isRegister ? registerMode : login
   const currentSearchMode = isRegister ? login : registerMode
   const current = APP_TEXT.auth[currentModeKey]
