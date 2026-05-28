@@ -1,10 +1,8 @@
-import type { User } from '../types'
-
-export const getUserFromLocalStorage = (): User | null => {
+export const getUserFromLocalStorage = <T>(key: string): T | null => {
   try {
-    const user = localStorage.getItem('user')
+    const user = localStorage.getItem(key)
     return user ? JSON.parse(user) : null
-  } catch (error:unknown) {
+  } catch (error: unknown) {
     if (error instanceof Error) {
       throw error
     }

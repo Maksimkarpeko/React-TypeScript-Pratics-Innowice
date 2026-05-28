@@ -1,4 +1,5 @@
-import userLogo from '@shared/assets/user.jpg'
+import women from '@shared/assets/female.png'
+import men from '@shared/assets/user.jpg'
 import { Button } from 'antd'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
@@ -10,9 +11,13 @@ export const Profile = () => {
   const { user, handleLogOut } = useAuth()
 
   return (
-    <div className='flex justify-end  mr-20 pt-6'>
+    <div className='flex justify-end  mr-20 pt-6 max-[1200px]:mr-0'>
       <div className='pr-5 flex'>
-        <img alt='User' className='rounded-2xl w-15 cursor-pointer mr-5' src={userLogo} />
+        {user?.gender === 'men' ? (
+          <img alt='User' className='rounded-2xl w-15 mr-5' src={men} />
+        ) : (
+          <img alt='User' className='rounded-2xl w-15 mr-5' src={women} />
+        )}
         <Button className='mt-4' onClick={() => setIsOpen(!isOpen)} type='primary'>
           {isOpen ? <ChevronDown /> : <ChevronUp />}
         </Button>

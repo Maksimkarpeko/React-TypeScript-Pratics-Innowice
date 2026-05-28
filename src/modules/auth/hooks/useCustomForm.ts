@@ -10,7 +10,6 @@ export const useCustomForm = (mode: AuthModeType) => {
   const { register: registerMode, login } = APP_TEXT.authMode
 
   const {
-    register,
     handleSubmit,
     formState: { errors: errorsForm },
     control,
@@ -30,7 +29,6 @@ export const useCustomForm = (mode: AuthModeType) => {
     current,
     isRegister,
     currentSearchMode,
-    register,
     handleSubmit,
     errorsForm,
     control,

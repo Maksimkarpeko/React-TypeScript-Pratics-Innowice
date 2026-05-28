@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './app/routes/auth'
 import { Route as MainRouteImport } from './app/routes/_main'
 import { Route as MainIndexRouteImport } from './app/routes/_main/index'
 import { Route as MainProblemListRouteImport } from './app/routes/_main/problemList'
+import { Route as MainProblemCreateRouteImport } from './app/routes/_main/problemCreate'
 import { Route as MainClientsRouteImport } from './app/routes/_main/clients'
 
 const WelcomeRoute = WelcomeRouteImport.update({
@@ -40,6 +41,11 @@ const MainProblemListRoute = MainProblemListRouteImport.update({
   path: '/problemList',
   getParentRoute: () => MainRoute,
 } as any)
+const MainProblemCreateRoute = MainProblemCreateRouteImport.update({
+  id: '/problemCreate',
+  path: '/problemCreate',
+  getParentRoute: () => MainRoute,
+} as any)
 const MainClientsRoute = MainClientsRouteImport.update({
   id: '/clients',
   path: '/clients',
@@ -51,12 +57,14 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/welcome': typeof WelcomeRoute
   '/clients': typeof MainClientsRoute
+  '/problemCreate': typeof MainProblemCreateRoute
   '/problemList': typeof MainProblemListRoute
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/welcome': typeof WelcomeRoute
   '/clients': typeof MainClientsRoute
+  '/problemCreate': typeof MainProblemCreateRoute
   '/problemList': typeof MainProblemListRoute
   '/': typeof MainIndexRoute
 }
@@ -66,20 +74,34 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/welcome': typeof WelcomeRoute
   '/_main/clients': typeof MainClientsRoute
+  '/_main/problemCreate': typeof MainProblemCreateRoute
   '/_main/problemList': typeof MainProblemListRoute
   '/_main/': typeof MainIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/welcome' | '/clients' | '/problemList'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/welcome'
+    | '/clients'
+    | '/problemCreate'
+    | '/problemList'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth' | '/welcome' | '/clients' | '/problemList' | '/'
+  to:
+    | '/auth'
+    | '/welcome'
+    | '/clients'
+    | '/problemCreate'
+    | '/problemList'
+    | '/'
   id:
     | '__root__'
     | '/_main'
     | '/auth'
     | '/welcome'
     | '/_main/clients'
+    | '/_main/problemCreate'
     | '/_main/problemList'
     | '/_main/'
   fileRoutesById: FileRoutesById
@@ -127,6 +149,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainProblemListRouteImport
       parentRoute: typeof MainRoute
     }
+    '/_main/problemCreate': {
+      id: '/_main/problemCreate'
+      path: '/problemCreate'
+      fullPath: '/problemCreate'
+      preLoaderRoute: typeof MainProblemCreateRouteImport
+      parentRoute: typeof MainRoute
+    }
     '/_main/clients': {
       id: '/_main/clients'
       path: '/clients'
@@ -139,12 +168,14 @@ declare module '@tanstack/react-router' {
 
 interface MainRouteChildren {
   MainClientsRoute: typeof MainClientsRoute
+  MainProblemCreateRoute: typeof MainProblemCreateRoute
   MainProblemListRoute: typeof MainProblemListRoute
   MainIndexRoute: typeof MainIndexRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
   MainClientsRoute: MainClientsRoute,
+  MainProblemCreateRoute: MainProblemCreateRoute,
   MainProblemListRoute: MainProblemListRoute,
   MainIndexRoute: MainIndexRoute,
 }

@@ -1,11 +1,13 @@
-export const customFetch = async <T>(url: string, options: RequestInit): Promise<T> => {
+import { BASE_URL } from '../constants'
+
+export const customFetch = async <T>(url: string, options?: RequestInit): Promise<T> => {
   try {
     const defaultOptions: RequestInit = {
       ...options,
-      headers: { 'Content-Type': 'application/json', ...options.headers },
+      headers: { 'Content-Type': 'application/json', ...options?.headers },
     }
 
-    const response = await fetch(url, defaultOptions)
+    const response = await fetch(`${BASE_URL}${url}`, defaultOptions)
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))

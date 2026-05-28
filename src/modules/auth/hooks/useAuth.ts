@@ -3,6 +3,8 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
 import { type SubmitHandler } from 'react-hook-form'
 
+import type { User } from '@/shared/types'
+
 import { getUserFromLocalStorage } from '@/shared/utils'
 
 import { loginUser, registrationUser } from '../api/auth.api'
@@ -28,8 +30,8 @@ export const useAuth = (mode?: AuthModeType) => {
 
   const { data: user } = useQuery({
     queryKey: ['userProfile'],
-    queryFn: getUserFromLocalStorage,
-    initialData: () => getUserFromLocalStorage() ?? undefined,
+    queryFn: () => getUserFromLocalStorage<User>('user'),
+    initialData: () => getUserFromLocalStorage<User>('user') ?? undefined,
     staleTime: Infinity,
   })
 
