@@ -13,6 +13,9 @@ import { Route as WelcomeRouteImport } from './app/routes/welcome'
 import { Route as AuthRouteImport } from './app/routes/auth'
 import { Route as MainRouteImport } from './app/routes/_main'
 import { Route as MainIndexRouteImport } from './app/routes/_main/index'
+import { Route as MainProblemListRouteImport } from './app/routes/_main/problemList'
+import { Route as MainProblemCreateRouteImport } from './app/routes/_main/problemCreate'
+import { Route as MainClientsRouteImport } from './app/routes/_main/clients'
 
 const WelcomeRoute = WelcomeRouteImport.update({
   id: '/welcome',
@@ -33,15 +36,36 @@ const MainIndexRoute = MainIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MainRoute,
 } as any)
+const MainProblemListRoute = MainProblemListRouteImport.update({
+  id: '/problemList',
+  path: '/problemList',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProblemCreateRoute = MainProblemCreateRouteImport.update({
+  id: '/problemCreate',
+  path: '/problemCreate',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainClientsRoute = MainClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => MainRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof MainIndexRoute
   '/auth': typeof AuthRoute
   '/welcome': typeof WelcomeRoute
+  '/clients': typeof MainClientsRoute
+  '/problemCreate': typeof MainProblemCreateRoute
+  '/problemList': typeof MainProblemListRoute
 }
 export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/welcome': typeof WelcomeRoute
+  '/clients': typeof MainClientsRoute
+  '/problemCreate': typeof MainProblemCreateRoute
+  '/problemList': typeof MainProblemListRoute
   '/': typeof MainIndexRoute
 }
 export interface FileRoutesById {
@@ -49,14 +73,37 @@ export interface FileRoutesById {
   '/_main': typeof MainRouteWithChildren
   '/auth': typeof AuthRoute
   '/welcome': typeof WelcomeRoute
+  '/_main/clients': typeof MainClientsRoute
+  '/_main/problemCreate': typeof MainProblemCreateRoute
+  '/_main/problemList': typeof MainProblemListRoute
   '/_main/': typeof MainIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/welcome'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/welcome'
+    | '/clients'
+    | '/problemCreate'
+    | '/problemList'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth' | '/welcome' | '/'
-  id: '__root__' | '/_main' | '/auth' | '/welcome' | '/_main/'
+  to:
+    | '/auth'
+    | '/welcome'
+    | '/clients'
+    | '/problemCreate'
+    | '/problemList'
+    | '/'
+  id:
+    | '__root__'
+    | '/_main'
+    | '/auth'
+    | '/welcome'
+    | '/_main/clients'
+    | '/_main/problemCreate'
+    | '/_main/problemList'
+    | '/_main/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,14 +142,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainIndexRouteImport
       parentRoute: typeof MainRoute
     }
+    '/_main/problemList': {
+      id: '/_main/problemList'
+      path: '/problemList'
+      fullPath: '/problemList'
+      preLoaderRoute: typeof MainProblemListRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/problemCreate': {
+      id: '/_main/problemCreate'
+      path: '/problemCreate'
+      fullPath: '/problemCreate'
+      preLoaderRoute: typeof MainProblemCreateRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/clients': {
+      id: '/_main/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof MainClientsRouteImport
+      parentRoute: typeof MainRoute
+    }
   }
 }
 
 interface MainRouteChildren {
+  MainClientsRoute: typeof MainClientsRoute
+  MainProblemCreateRoute: typeof MainProblemCreateRoute
+  MainProblemListRoute: typeof MainProblemListRoute
   MainIndexRoute: typeof MainIndexRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
+  MainClientsRoute: MainClientsRoute,
+  MainProblemCreateRoute: MainProblemCreateRoute,
+  MainProblemListRoute: MainProblemListRoute,
   MainIndexRoute: MainIndexRoute,
 }
 

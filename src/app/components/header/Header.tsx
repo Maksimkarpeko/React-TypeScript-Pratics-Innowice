@@ -1,7 +1,9 @@
+import { NavBar } from '../ui/navBar/navBar'
+
 export const Header = () => {
   return (
-    <header>
-      Main Header
+    <header className='z-50'>
+      <NavBar />
     </header>
   )
 }

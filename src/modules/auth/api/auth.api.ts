@@ -1,14 +1,15 @@
-import { BASE_URL } from '@shared/constants'
-import type { AuthFormFields } from '../schema/auth.schema'
 import type { User } from '@shared/types'
+
 import { customFetch } from '@shared/utils'
+
+import type { AuthFormFields } from '../schema/auth.schema'
 
 export const registrationUser = async ({
   username,
   password,
   email,
 }: AuthFormFields): Promise<User> => {
-  const response = await customFetch<User>(`${BASE_URL}/user/add`, {
+  const response = await customFetch<User>('/user/add', {
     method: 'POST',
     body: JSON.stringify({
       username,
@@ -23,7 +24,7 @@ export const loginUser = async ({
   username,
   password,
 }: Pick<AuthFormFields, 'username' | 'password'>): Promise<User> => {
-  const response = await customFetch<User>(`${BASE_URL}/auth/login`, {
+  const response = await customFetch<User>('/auth/login', {
     method: 'POST',
     body: JSON.stringify({
       username,

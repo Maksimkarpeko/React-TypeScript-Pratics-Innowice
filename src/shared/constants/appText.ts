@@ -10,6 +10,9 @@ export const APP_TEXT = {
     register: 'registration',
     login: 'login',
   },
+  home: {
+    text: 'Have a great day! You can create new requests regarding issues and track their status.Click the button below to describe your problem, and our team will get to work right away.',
+  },
   auth: {
     registration: {
       title: 'Create an account',

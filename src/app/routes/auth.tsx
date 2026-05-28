@@ -1,10 +1,10 @@
 import { AuthForm } from '@modules/auth'
-import { APP_TEXT, ROUTES_PATHS } from '@shared/constants'
+import { APP_TEXT } from '@shared/constants'
 import { createFileRoute } from '@tanstack/react-router'
 
 const { register, login } = APP_TEXT.authMode
 
-export const Route = createFileRoute(`${ROUTES_PATHS.auth}`)({
+export const Route = createFileRoute('/auth')({
   component: () => <AuthRouteForm />,
   validateSearch: (search: Record<string, unknown>) => ({
     mode: search.mode === register ? register : login,
@@ -13,5 +13,5 @@ export const Route = createFileRoute(`${ROUTES_PATHS.auth}`)({
 
 const AuthRouteForm = () => {
   const { mode } = Route.useSearch()
-  return <AuthForm mode={mode} key={mode} />
+  return <AuthForm key={mode} mode={mode} />
 }

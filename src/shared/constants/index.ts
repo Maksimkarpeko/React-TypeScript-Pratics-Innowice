@@ -1,3 +1,3 @@
-export { APP_TEXT, type AuthModeType } from './app-text'
-export { BASE_URL } from './base-url'
-export { ROUTES_PATHS } from './routes-paths'
+export { APP_TEXT, type AuthModeType } from './appText'
+export { BASE_URL } from './baseUrl'
+export { ROUTES_PATHS } from './routesPaths'
